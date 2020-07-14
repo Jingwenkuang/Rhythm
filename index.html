@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Rhythm</title>
+  <script src="app.js" charset="utf-8"></script>
+</head>
+<body>
+  <h1>Welcome to Rhythm!</h1>
+
+  <div id="radio-box">
+    <div class="radio-box-container"></div>
+    <div class="radio-box-content">
+      <div class="radio-box-buttons"> 
+        <input type="range" id="volume" class="volume-button" min="0" max="2" step="0.01" data-action="volume" value="1" list="adjust-values"/>
+          <datalist id="adjust-values">
+              <option value="0" label="min">
+              <option value="2" label="max">
+          </datalist>
+          <label for="volume">Volume</label>
+
+        <input type="range" id="panner" class="panner-button" min="-1" max="1" value="0" step="0.01" data-action="panner" list="adjust-values"/>
+        <datalist id="adjust-panner">
+          <option value="-1" label="left">
+          <option value="1" label="right">
+        </datalist>
+        <label for="panner">Panner</label>
+
+        <button class="power-switch" role="switch" aria-checked="false" data-power="on">
+          <span>On/Off</span>
+        </button>
+      </div>
+
+      <div class="radio-box-play">
+        <audio src="audio1.mp3" crossorigin="anonymous"></audio>
+        <button class="radio-control-play" role="switch" aria-checked="false" data-playing="false">
+          <span>Play/Pause</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
