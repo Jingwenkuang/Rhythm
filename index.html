@@ -8,41 +8,80 @@
   <script src="app.js" defer charset="utf-8"></script>
 </head>
 <body>
-  <!-- <h1>Welcome to Rhythm!</h1> -->
+  <div class="modal">
+    <div class="background">
+      <h1 class="title">Welcome to Rhythm!</h1>
+      <div class="radio-box">
+        <div class="radio-box-container"></div>
+        <div class="radio-box-content">
+          <div class="radio-box-buttons"> 
+            <input type="range" id="volume" class="volume-button" min="0" max="2" step="0.01" data-action="volume" value="1" list="adjust-values"/>
+              <datalist id="adjust-values">
+                  <option value="0" label="min">
+                  <option value="2" label="max">
+              </datalist>
+              <label for="volume">Volume</label>
 
-  <div class="radio-box">
-    <div class="radio-box-container"></div>
-    <div class="radio-box-content">
-      <div class="radio-box-buttons"> 
-        <input type="range" id="volume" class="volume-button" min="0" max="2" step="0.01" data-action="volume" value="1" list="adjust-values"/>
-          <datalist id="adjust-values">
-              <option value="0" label="min">
-              <option value="2" label="max">
-          </datalist>
-          <label for="volume">Volume</label>
+            <input type="range" id="panner" class="panner-button" min="-1" max="1" value="0" step="0.01" data-action="panner" list="adjust-values"/>
+            <datalist id="adjust-panner">
+              <option value="-1" label="left">
+              <option value="1" label="right">
+            </datalist>
+            <label for="panner">Panner</label>
 
-        <input type="range" id="panner" class="panner-button" min="-1" max="1" value="0" step="0.01" data-action="panner" list="adjust-values"/>
-        <datalist id="adjust-panner">
-          <option value="-1" label="left">
-          <option value="1" label="right">
-        </datalist>
-        <label for="panner">Panner</label>
+            <button id="onOffSwitch" class="power-switch" role="switch" aria-checked="false" data-power="on">
+              <span>On/Off</span>
+            </button>
+          </div>
 
-        <button id="onOffSwitch" class="power-switch" role="switch" aria-checked="false" data-power="on">
-          <span>On/Off</span>
-        </button>
+          <div class="radio-box-play">
+            <audio src="https://rhythm-audio.s3-us-west-1.amazonaws.com/miamiNights.mp3" crossorigin="anonymous"></audio>
+          <!-- <audio src="audio1.mp3" crossorigin="anonymous"></audio> -->
+            <button class="radio-control-play" role="switch" aria-checked="false" data-playing="false">
+             <span></span>
+            <!-- <span>Play/Pause</span> -->
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div class="radio-box-play">
-        <audio src="https://rhythm-audio.s3-us-west-1.amazonaws.com/miamiNights.mp3" crossorigin="anonymous"></audio>
-        <!-- <audio src="audio1.mp3" crossorigin="anonymous"></audio> -->
-        <button class="radio-control-play" role="switch" aria-checked="false" data-playing="false">
-          <span></span>
-          <!-- <span>Play/Pause</span> -->
-        </button>
+      <div class="link-buttons">
+        <div class="close"><a>Continue</a></div>
       </div>
-
     </div>
   </div>
+
+
+<nav class="nav">
+
+  <div class="button sample"><a>play sample track</a></div>
+  <input type="file" name="audiofile" id="audiofile" class="inputfile" />
+  <label for="audiofile" class="button fileinput"><a>Choose a file</a></label>
+  <div class="controls">
+    <p class="play"></p>
+    <p class="stop"></p>
+    <p class="help">?</p>
+  </div>
+  <aside class="options">
+    <div class="options-header">options</div>
+    <ul class="options-list">
+      <li>color
+        <div class="color">
+          <div class="rainbow"></div>
+          <a class="cycle">cycle colors</a>
+        </div>
+      </li>
+
+      <li>visualization
+        <div class="visualization">
+          <a id="circles" class="selected">circles</a>
+          <a id="oscillo">oscilloscope</a>
+          <a></a>
+        </div>
+      </li>
+    </ul>
+  </aside>
+</nav>
+<canvas id="canvas"></canvas>
 </body>
 </html>
