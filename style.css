@@ -28,11 +28,9 @@ body {
 }
 
 .radio-box {
-	width: 600px; max-width: 600px; margin: 0px auto;
+	width: 600px; max-width: 580px; margin: 0px auto;
 }
-/* @media screen and (max-width: 570px) {
-	.radio-box {max-width: 600px;}
-} */
+
 /* .radio-box-container {
   border: 5px solid black; 
   border-bottom-width: 0px;
@@ -49,40 +47,41 @@ body {
 .radio-box-content { 
 background: gray repeat-x bottom left;
 background-image:
-		radial-gradient(circle,
-			var(--boxMain) 2vmin,
-			var(--black) 2vmin,
-			var(--black) 3vmin,
-			var(--boxSecond) 3vmin,
-			var(--boxSecond) 9vmin,
-			var(--black) 9vmin,
-			var(--black) 9.5vmin,
-			var(--boxSecond) 9.5vmin,
-			var(--boxSecond) 12vmin,
-			var(--black) 12vmin,
-			var(--black) 13vmin,
-			var(--boxMain) 13vmin);
+ radial-gradient(circle,
+   hsl(66, 25%, 65%) 10px,
+   black 2px,
+   black 13px,
+   silver 16px,
+   gray 37px,
+   black 38px,
+   black 30px,
+   gray 43px,
+   gray 56px,
+   black 40px,
+   black 59px,
+   white 60px);
+	
 	background-size: 33.3% 70%;
 	border: 6px solid var(--black);
 	border-radius: 2px;
  }
 
 .radio-box-buttons {
-	display: grid;
+  display: grid;
 	grid-template-rows: repeat(2, auto);
 	grid-template-columns: repeat(2, 1fr) 12%; 
 
  grid-template-areas:
 		"volin panin power"
-		"vollab panlab power";
-	justify-items: center; align-items: center;
-	padding: 18px;
+		"vollab panlab power"; 
+	justify-items: center; align-items: center; 
+	padding: 7px;
 	background-color: hsl(201, 16%, 79%);
 	border-bottom: var(--border);
 }
 
 
- .radio-box-buttons input, .radio-box-buttons label {display: block;} 
+.radio-box-buttons input, .radio-box-buttons label {display: block;} 
 .radio-box-buttons input::before, .radio-box-buttons input::after { 
 	line-height: 5vh; color: var(--black);
 }
@@ -108,53 +107,18 @@ label[for="panner"] {grid-area: panlab; margin-top: 15px;}
 .power-switch span {display: none;}
 
 
-/* tape area ~~~~~~~~~~~~~~~~~~~~~~ */
 .radio-box-play {
-	display: grid;
-	grid-template-rows: 24vh 6vh;
-	grid-template-columns: repeat(5, 1fr);
-	grid-template-areas: "tape tape tape tape tape"
-		"back rewind play ff next";
-
-	width: 26vw; margin: 0px auto;
-	background: var(--boxMain) no-repeat center center;
-	background-image:
-		radial-gradient(circle at 30%,
-			var(--boxSecond) 2vh,
-			var(--black) 2vh,
-			var(--black) 2.5vh,
-			transparent 2.5vh),
-		radial-gradient(circle at 70%,
-			var(--boxSecond) 2vh,
-			var(--black) 2vh,
-			var(--black) 2.5vh,
-			transparent 2.5vh),
-		linear-gradient(180deg,
-			transparent 9.1vh,
-			var(--black) 9.1vh,
-			var(--black) 10.1vh,
-			var(--boxHigh) 10.1vh,
-			var(--boxHigh) 20vh,
-			var(--black) 20vh,
-			var(--black) 21vh,
-			transparent 21vh),
-		radial-gradient(circle at 30%,
-			var(--boxHigh) 5vh,
-			var(--black) 5vh,
-			var(--black) 6vh,
-			transparent 6vh),
-		radial-gradient(circle at 70%,
-			var(--boxHigh) 5vh,
-			var(--black) 5vh,
-			var(--black) 6vh,
-			transparent 6vh);
-	background-size: 100% 100%, 100% 100%, 40% 100%, 100% 100%, 100% 100%;
-	border: var(--border); border-bottom-width: 0px;
-	border-radius: var(--borderRad);
-	max-width: 300px;
+  display: block;
+  padding: 1px;
+  width: 197px;
+  height: 140px;
+  margin: 0px auto;
+  border-left: 5px solid black;
+  border-right: 5px solid black;
+	background: silver no-repeat center center;
 }
 
-TODO GIVE BUTTONS CLASSES
+/* TODO GIVE BUTTONS CLASSES */
 [class^="tape-controls"] {
 	border: none;
 }
@@ -234,6 +198,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 [data-playing] {
 		background: transparent url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z" fill="black" /></svg>') no-repeat center center;
     background-size: 60% 60%;
+    padding: 20px;
+    margin-top: 45px;
+    margin-left: 77px;
+    border: none;
 		cursor: pointer;
 }
 [data-playing]:hover {
