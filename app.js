@@ -103,7 +103,7 @@ window.onload = function () {
   var sample = document.getElementsByClassName('sample')[0];
 
   sample.addEventListener('click', function () {
-    audio = new Audio('miamiNights.mp3');
+    audio = new Audio('cheap thrills.mp3');
     setup();
   });
 
