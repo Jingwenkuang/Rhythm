@@ -544,31 +544,6 @@ p:hover {
   color: darkturquoise;
 }
 
-.close {
-  width: 93%;
-  margin-left: 30px;
-}
-
-.close a {
-  text-align: center;
-}
-
-.close:hover {
-  color: darkslategray;
-}
-
-.closed {
-  display: none;
-}
-
-.opening li.github {
-  margin-left: 20px;
-}
-
-.opening li.personal {
-  margin-left: 20px;
-}
-
 .links-box {
   display: flex;
   justify-content: center; 
@@ -577,7 +552,7 @@ p:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding: 50px 127px 0px 0px;
 }
 
 .social-media-links > a {
@@ -600,4 +575,29 @@ p:hover {
   box-shadow: 0 0 35px 12px white;
   background-color: whitesmoke;
   border-radius: 50px;
+}
+
+/* .close {
+  width: 93%;
+  margin-left: 30px;
+}
+
+.close a {
+  text-align: center;
+}
+
+.close:hover {
+  color: darkslategray;
+}
+
+.closed {
+  display: none;
+} */
+
+.link-buttons {
+  font-size: 20px;
+ 
+  display: block;
+ 
+  padding: 72px 0px 0px 160px;
 }
