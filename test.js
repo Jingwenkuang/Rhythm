@@ -16,7 +16,7 @@ window.onload = function () {
   let demo = document.getElementsByClassName('sample')[0];
 
   demo.addEventListener('click', function () {
-    audio = new Audio('cheap thrills.mp3');
+    audio = new Audio('beautifulEmotion.mp3');
     setupAudio();
   });
 
@@ -25,7 +25,7 @@ window.onload = function () {
       audioContext = audioContext || new AudioContext();
       //create analyzer
       analyser = (analyser || audioContext.createAnalyser());
-      analyser.smoothingTimeConstant = 0.1;
+      analyser.smoothingTimeConstant = 0.3;
       analyser.fftSize = 256;
       startAudio();
     });
@@ -120,11 +120,13 @@ window.onload = function () {
   function drawBars(context) {
     let x = 0; 
     let gradient = context.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(0, "rgba(255, 165, 0, 0.2)");
     gradient.addColorStop(1, "rgba(255, 0, 0, 0.2)");
+    gradient.addColorStop(0.75, '#ff0000');
+    gradient.addColorStop(0.25, '#ffff00');
+    gradient.addColorStop(0, '#ffffff');
     for (let i = 0; i < bufferLength; i += 1) {
+      let barWidth = (width / bufferLength);
       let barHeight = dataArray[i] * 5;
-      let barWidth = (width / bufferLength) * 2.5;
       context.fillStyle = gradient;
       context.fillRect(x, height - barHeight / 2, barWidth, barHeight);
       x += barWidth + 1;
