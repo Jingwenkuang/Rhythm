@@ -11,11 +11,11 @@ window.onload = function () {
       setupAudio();
     }
   });
-}
 
-let sample = document.getElementsByClassName('sample')[0];
 
-sample.addEventListener('click', function () {
+let demo = document.getElementsByClassName('sample')[0];
+
+demo.addEventListener('click', function () {
   audio = new Audio('cheap thrills.mp3');
   setupAudio();
 });
@@ -27,11 +27,11 @@ function setupAudio() {
     analyser = (analyser || audioContext.createAnalyser());
     analyser.smoothingTimeConstant = 0.1;
     analyser.fftSize = 512;
-    startSound();
+    start();
   });
 }
 
-function startSound() {
+function start() {
   sourceNode = audioContext.createMediaElementSource(audio);
   sourceNode.connect(analyser);
   sourceNode.connect(audioContext.destination);
@@ -58,4 +58,30 @@ function stopSound() {
     }
   }
 }
+
+// const playButton = document.getElementById("toggle-buttons");
+// playButton.addEventListener("click", function() {
+//   if (audioContext) {
+//     if (audioContext.state === "suspended") {
+//     audioContext.resume();
+//     } else if (audioContext.state === "running") {
+//     audioContext.suspend();
+//     }
+//   }
+// })
+
+const canvas = document.getElementById('canvas');
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+  context = canvas.getContext("2d");
+
+
+
+
+
+}
+
+
+
+
 

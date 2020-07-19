@@ -291,15 +291,15 @@ body {
 }
 
 .play .buttons {
-  width: 3%;
+  width: 40px;
 }
 
 .stop .buttons{
-  width: 4%;
+  width: 48px;
 }
 
 .back .buttons {
-  width: 4%;
+  width: 50px;
   
 }
 
