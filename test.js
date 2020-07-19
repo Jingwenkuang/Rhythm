@@ -26,7 +26,7 @@ window.onload = function () {
       //create analyzer
       analyser = (analyser || audioContext.createAnalyser());
       analyser.smoothingTimeConstant = 0.1;
-      analyser.fftSize = 512;
+      analyser.fftSize = 256;
       startAudio();
     });
   }
@@ -118,12 +118,15 @@ window.onload = function () {
   }
 
   function drawBars(context) {
+    let x = 0; 
+    let gradient = context.createLinearGradient(0, 0, 0, height);
+    gradient.addColorStop(0, "rgba(255, 165, 0, 0.2)");
+    gradient.addColorStop(1, "rgba(255, 0, 0, 0.2)");
     for (let i = 0; i < bufferLength; i += 1) {
-      let barHeight = dataArray[i] / 2;
+      let barHeight = dataArray[i] * 5;
       let barWidth = (width / bufferLength) * 2.5;
-      let x = 0; 
-      context.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
-      context.fillRect(x, height - barHeight/2, barWidth, barHeight);
+      context.fillStyle = gradient;
+      context.fillRect(x, height - barHeight / 2, barWidth, barHeight);
       x += barWidth + 1;
     }
   }
