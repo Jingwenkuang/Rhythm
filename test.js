@@ -82,7 +82,8 @@ window.onload = function () {
     context.clearRect(0, 0, width, height);
     bufferLength = analyser.frequencyBinCount;
     dataArray = new Uint8Array(analyser.frequencyBinCount);
-    analyser.getByteTimeDomainData(dataArray);
+    // analyser.getByteTimeDomainData(dataArray);
+    analyser.getByteFrequencyData(dataArray);
     // oscilloX = 0;
     if (display === "circles") {
       for (let i = 0; i < dataArray.length; i += 1) {
@@ -91,8 +92,8 @@ window.onload = function () {
       }
     } else if (display === "bars") {
       drawBars(context, dataArray);
-    } else if (display === "oscillo") {
-      drawOscillo(context, dataArray);
+    } else if (display === "oscilloscope") {
+      drawOscilloscope(context, dataArray);
     }
 
     if (cycle && audioContext.state === 'running') {
@@ -109,7 +110,8 @@ window.onload = function () {
     gradient.addColorStop(1, "rgba(255, 0, 0, 0.2)");
     //draw a circle 
     context.beginPath();
-    context.arc(centerX - (freq / 7), centerY - (freq / 7), (Math.abs(freq - 150)) * 3, 0, 2 * Math.PI);
+    // context.arc(centerX - (freq / 7), centerY - (freq /7), (Math.abs(freq - 150)) * 3, 0, 2 * Math.PI);
+    context.arc(centerX - (freq / 4), centerY - (freq / 4), (Math.abs(freq - 15)) * 1, 0, 2 * Math.PI);
     context.strokeStyle = gradient;
     context.fillStyle = "hsla(" + hue + ", 100%, 40%, .01)";
     context.fill();
@@ -117,7 +119,7 @@ window.onload = function () {
     context.stroke();
   }
 
-  function drawBars(context) {
+  function drawBars(context, dataArray) {
     let x = 0; 
     let gradient = context.createLinearGradient(0, 0, 0, height);
     gradient.addColorStop(1, "rgba(255, 0, 0, 0.2)");
@@ -131,6 +133,10 @@ window.onload = function () {
       context.fillRect(x, height - barHeight / 2, barWidth, barHeight);
       x += barWidth + 1;
     }
+  }
+
+  function drawOscilloscope(context, dataArray) {
+    
   }
   // const categories = document.getElementsByClassName("categories-box");
   //   categories.addEventListener("click", function() {
