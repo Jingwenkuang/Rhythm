@@ -78,56 +78,21 @@ window.onload = function () {
 
   var hue = hue || 330; 
   
-
-
-  function drawCircle(context, val) {
-    let centerX = (width / 2);
-    let centerY = (height / 2);
-    let gradient = context.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(0, "rgba(255, 165, 0, 0.2)");
-    gradient.addColorStop(1, "rgba(255, 0, 0, 0.2)");
-    //draw a circle 
-    context.beginPath();
-    context.arc(centerX - (val/7), centerY - (val/7), (Math.abs(val - 150)) * 3, 0, 2 * Math.PI);
-    context.strokeStyle = gradient;
-    context.fillStyle = "hsla(" + hue + ", 100%, 40%, .01)";
-    context.fill();
-    context.lineWidth = 2;
-    context.stroke();
-  }
-
-  // function update() {
-  //   context.clearRect(0, 0, width, height);
-  //   let dataArray = new Uint8Array(analyser.frequencyBinCount);
-  //   analyser.getByteTimeDomainData(dataArray);
-
-  //   if (display === "circles") {
-  //     for (let i = 0; i < dataArray.length; i += 1) {
-  //       let graph = dataArray[i];
-  //       drawCircle = (context, graph, i);
-  //     }
-  //   } else if (display === "oscillogram") {
-  //     drawOscillogram(context, dataArray);
-  //   }
-  //   if (cycle && audioContext.state === "running") {
-  //     hue += 1;
-  //   }
-  //   requestAnimationFrame(update);
-  // }
   function update() {
     context.clearRect(0, 0, width, height);
-    freqArray = new Uint8Array(analyser.frequencyBinCount);
-    analyser.getByteTimeDomainData(freqArray);
-    oscilloX = 0;
+    bufferLength = analyser.frequencyBinCount;
+    dataArray = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteTimeDomainData(dataArray);
+    // oscilloX = 0;
     if (display === "circles") {
-
-      for (let i = 0; i < freqArray.length; i += 1) {
-        let point = freqArray[i];
-        drawCircle(context, point);
-
+      for (let i = 0; i < dataArray.length; i += 1) {
+        let freq = dataArray[i];
+        drawCircle(context, freq);
       }
+    } else if (display === "bars") {
+      drawBars(context, dataArray);
     } else if (display === "oscillo") {
-      drawOscillo(context, freqArray);
+      drawOscillo(context, dataArray);
     }
 
     if (cycle && audioContext.state === 'running') {
@@ -136,6 +101,32 @@ window.onload = function () {
     requestAnimationFrame(update);
   }
 
+  function drawCircle(context, freq) {
+    let centerX = (width / 2);
+    let centerY = (height / 2);
+    let gradient = context.createLinearGradient(0, 0, 0, height);
+    gradient.addColorStop(0, "rgba(255, 165, 0, 0.2)");
+    gradient.addColorStop(1, "rgba(255, 0, 0, 0.2)");
+    //draw a circle 
+    context.beginPath();
+    context.arc(centerX - (freq / 7), centerY - (freq / 7), (Math.abs(freq - 150)) * 3, 0, 2 * Math.PI);
+    context.strokeStyle = gradient;
+    context.fillStyle = "hsla(" + hue + ", 100%, 40%, .01)";
+    context.fill();
+    context.lineWidth = 1;
+    context.stroke();
+  }
+
+  function drawBars(context) {
+    for (let i = 0; i < bufferLength; i += 1) {
+      let barHeight = dataArray[i] / 2;
+      let barWidth = (width / bufferLength) * 2.5;
+      let x = 0; 
+      context.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
+      context.fillRect(x, height - barHeight/2, barWidth, barHeight);
+      x += barWidth + 1;
+    }
+  }
   // const categories = document.getElementsByClassName("categories-box");
   //   categories.addEventListener("click", function() {
   //     let lists = document.getElementsByClassName("categories-list");
@@ -152,8 +143,14 @@ window.onload = function () {
     })
 
   const circlesButton = document.getElementById('circles');
+  const barsButton = document.getElementById('bars');
   circlesButton.addEventListener("click", function () {
     display = "circles";
+    console.log(display);
+  });
+
+  barsButton.addEventListener("click", function () {
+    display = "bars";
     console.log(display);
   })
 }
