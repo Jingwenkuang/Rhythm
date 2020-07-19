@@ -76,7 +76,25 @@ const canvas = document.getElementById('canvas');
   context = canvas.getContext("2d");
 
 
+var hue = hue || 330; 
+function update() {
+  
+  context.clearRect(0, 0, width, height);
+  let dataArray = new Uint8Array(analyser.frequencyBinCount);
+  analyser.getByteTimeDomainData(dataArray);
 
+  if (display === "circles")
+  for (let i = 0; i < dataArray.length; i += 1) {
+    let graph = dataArray[i];
+    drawCircle = (context, graph, i);
+  } else if (display === "oscillogram") {
+    drawOscillogram(context, dataArray);
+  }
+  if (cycle && audioContext.state === "running") {
+    hue += 1;
+  }
+  requestAnimationFrame(update);
+}
 
 
 }
