@@ -84,7 +84,7 @@ window.onload = function () {
     dataArray = new Uint8Array(analyser.frequencyBinCount);
     // analyser.getByteTimeDomainData(dataArray);
     analyser.getByteFrequencyData(dataArray);
-    // oscilloX = 0;
+    oscilloX = 0;
     if (display === "circles") {
       for (let i = 0; i < dataArray.length; i += 1) {
         let freq = dataArray[i];
@@ -135,14 +135,57 @@ window.onload = function () {
     }
   }
 
-  function drawOscilloscope(context, dataArray) {
-    
-  }
+  // function drawOscilloscope(context, dataArray) {
+  //   context.fillStyle = 'rgb(200, 200, 200)';
+  //   context.lineWidth = 1;
+  //   context.strokeStyle = 'rgb(0, 0, 0)';
+  //   context.beginPath();
+  //   let sliceWidth = canvas.width * 1.0 / dataArray.length;
+  //   let x = 0;
+  //   for (let i = 0; i < dataArray.length; i += 1) {
+  //     let v = dataArray[i] / 128;
+  //     let y = v * 200 / 2;
+  //     if ( i === 0) {
+  //       context.moveTo(x, y);
+  //     } else {
+  //       context.lineTo(x, y);
+  //     }
+  //   }
+  //   x += sliceWidth;
+  //   context.lineTo(canvas.width, canvas.height / 2);
+  //   context.stroke();
+  // }
+
   // const categories = document.getElementsByClassName("categories-box");
   //   categories.addEventListener("click", function() {
   //     let lists = document.getElementsByClassName("categories-list");
   //       lists.classList.toggle("hiding");
   //   })
+  function drawOscilloscope(context, freqArray) {
+
+    context.beginPath();
+    let sliceWidth = canvas.width * 1.0 / bufferLength;
+
+    let oscilloX = 0;
+    for (let i = 0; i < bufferLength; i++) {
+
+      let v = freqArray[i] / 86.0;
+      let y = v * 200 / 2;
+
+      if (i === 0) {
+        context.moveTo(oscilloX, y);
+      } else {
+        context.lineTo(oscilloX, y);
+      }
+
+      oscilloX += sliceWidth;
+    }
+
+    context.strokeStyle = 'hsla(' + hue + ', ' + 100 + '%,' + 40 + '%,' + 0.9 + ')';
+    context.lineTo(canvas.width, canvas.height / 1);
+    context.lineWidth = 2;
+    context.stroke();
+  }
 
   const cycleButton = document.getElementsByClassName("cycle")[0];
     cycleButton.addEventListener("click", function() {
@@ -155,6 +198,7 @@ window.onload = function () {
 
   const circlesButton = document.getElementById('circles');
   const barsButton = document.getElementById('bars');
+  const oscilloButton = document.getElementById('oscilloscope');
   circlesButton.addEventListener("click", function () {
     display = "circles";
     console.log(display);
@@ -162,6 +206,11 @@ window.onload = function () {
 
   barsButton.addEventListener("click", function () {
     display = "bars";
+    console.log(display);
+  })
+
+  oscilloButton.addEventListener("click", function () {
+    display = "oscilloscope";
     console.log(display);
   })
 }
