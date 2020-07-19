@@ -1,7 +1,7 @@
-let audioContext, analyser, context, sourceNode;
+let audioContext, analyser, context, sourceNode, cycle;
 
 window.onload = function () {
-
+  let display = "circles";
   let audio = document.getElementById('audio-input');
   audio.addEventListener('change', function (e) {
     if (!audioContext || audioContext.state !== "running") {
@@ -77,39 +77,85 @@ window.onload = function () {
 
 
   var hue = hue || 330; 
-  function update() {
-  context.clearRect(0, 0, width, height);
-  let dataArray = new Uint8Array(analyser.frequencyBinCount);
-  analyser.getByteTimeDomainData(dataArray);
+  
 
-  if (display === "circles") {
-    for (let i = 0; i < dataArray.length; i += 1) {
-      let graph = dataArray[i];
-      drawCircle = (context, graph, i);
-    } 
-  } else if (display === "oscillogram") {
-      drawOscillogram(context, dataArray);
-    }
-  if (cycle && audioContext.state === "running") {
-    hue += 1;
-  }
-  requestAnimationFrame(update);
-  }
 
-  function drawCircle(context, freq ) {
+  function drawCircle(context, val) {
     let centerX = (width / 2);
     let centerY = (height / 2);
     let gradient = context.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(0, "rgba(35, 7, 77, 1)");
-    gradient.addColorStop(1, "rgba(204, 83, 51, 1)");
+    gradient.addColorStop(0, "rgba(255, 165, 0, 0.2)");
+    gradient.addColorStop(1, "rgba(255, 0, 0, 0.2)");
     //draw a circle 
     context.beginPath();
-    context.arc(centerX, centerY, 0, 2 * Math.PI);
-    context.strokeStyle = "hsla(' + hue + ', 100%, 40%, 1.0)";
-    context.fillStyle = "hsla(' + hue + ', 100%, 40%, 0.01)";
+    context.arc(centerX - (val/7), centerY - (val/7), (Math.abs(val - 150)) * 3, 0, 2 * Math.PI);
+    context.strokeStyle = gradient;
+    context.fillStyle = "hsla(" + hue + ", 100%, 40%, .01)";
+    context.fill();
+    context.lineWidth = 2;
+    context.stroke();
   }
 
+  // function update() {
+  //   context.clearRect(0, 0, width, height);
+  //   let dataArray = new Uint8Array(analyser.frequencyBinCount);
+  //   analyser.getByteTimeDomainData(dataArray);
 
+  //   if (display === "circles") {
+  //     for (let i = 0; i < dataArray.length; i += 1) {
+  //       let graph = dataArray[i];
+  //       drawCircle = (context, graph, i);
+  //     }
+  //   } else if (display === "oscillogram") {
+  //     drawOscillogram(context, dataArray);
+  //   }
+  //   if (cycle && audioContext.state === "running") {
+  //     hue += 1;
+  //   }
+  //   requestAnimationFrame(update);
+  // }
+  function update() {
+    context.clearRect(0, 0, width, height);
+    freqArray = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteTimeDomainData(freqArray);
+    oscilloX = 0;
+    if (display === "circles") {
+
+      for (let i = 0; i < freqArray.length; i += 1) {
+        let point = freqArray[i];
+        drawCircle(context, point);
+
+      }
+    } else if (display === "oscillo") {
+      drawOscillo(context, freqArray);
+    }
+
+    if (cycle && audioContext.state === 'running') {
+      hue += 1;
+    }
+    requestAnimationFrame(update);
+  }
+
+  // const categories = document.getElementsByClassName("categories-box");
+  //   categories.addEventListener("click", function() {
+  //     let lists = document.getElementsByClassName("categories-list");
+  //       lists.classList.toggle("hiding");
+  //   })
+
+  const cycleButton = document.getElementsByClassName("cycle")[0];
+    cycleButton.addEventListener("click", function() {
+      if (cycle) {
+        cycle = false;
+      } else {
+        cycle = true;
+      }
+    })
+
+  const circlesButton = document.getElementById('circles');
+  circlesButton.addEventListener("click", function () {
+    display = "circles";
+    console.log(display);
+  })
 }
 
 
