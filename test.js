@@ -59,24 +59,11 @@ window.onload = function () {
       }
     });
 
-// const playButton = document.getElementById("toggle-buttons");
-// playButton.addEventListener("click", function() {
-//   if (audioContext) {
-//     if (audioContext.state === "suspended") {
-//     audioContext.resume();
-//     } else if (audioContext.state === "running") {
-//     audioContext.suspend();
-//     }
-//   }
-// })
-
   const canvas = document.getElementById('canvas');
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
     context = canvas.getContext("2d");
-
-
-  var hue = hue || 330; 
+    var hue = hue || 330; 
   
   function update() {
     context.clearRect(0, 0, width, height);
@@ -110,7 +97,6 @@ window.onload = function () {
     let gradient = context.createLinearGradient(0, 0, 0, height);
     gradient.addColorStop(0, "rgba(255, 165, 0, 0.2)");
     gradient.addColorStop(1, "rgba(255, 0, 0, 0.2)");
-    //draw a circle 
     context.beginPath();
     context.arc(centerX - (freq / 7), centerY - (freq /7), (Math.abs(freq - 150)) * 3, 0, 2 * Math.PI);
     // context.arc(centerX - (freq / 4), centerY - (freq / 4), (Math.abs(freq - 15)) * 1, 0, 2 * Math.PI);
@@ -125,10 +111,11 @@ window.onload = function () {
     analyser.getByteFrequencyData(dataArray);
     let x = 0; 
     let gradient = context.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(1, "rgba(255, 0, 0, 0.2)");
-    gradient.addColorStop(0.75, '#ff0000');
+    gradient.addColorStop(1, '#ff0000');
+    gradient.addColorStop(0.75, 'hsla(' + hue + ', ' + 70 + '%,' + 40 + '%,' + 0.9 + ')');
     gradient.addColorStop(0.25, '#ffff00');
-    gradient.addColorStop(0, '#ffffff');
+    gradient.addColorStop(0, 'hsla(' + hue + ', ' + 10 + '%,' + 40 + '%,' + 0.9 + ')');
+
     for (let i = 0; i < bufferLength; i += 1) {
       let barWidth = (width / bufferLength);
       let barHeight = dataArray[i] * 5;
@@ -138,11 +125,6 @@ window.onload = function () {
     }
   }
 
-  // const categories = document.getElementsByClassName("categories-box");
-  //   categories.addEventListener("click", function() {
-  //     let lists = document.getElementsByClassName("categories-list");
-  //       lists.classList.toggle("hiding");
-  //   })
   function drawOscilloscope(context, dataArray) {
     context.strokeStyle = 'hsla(' + hue + ', ' + 100 + '%,' + 40 + '%,' + 0.9 + ')';
     context.lineWidth = 3;
@@ -164,16 +146,6 @@ window.onload = function () {
     context.stroke();
   }
 
- 
-  const cycleButton = document.getElementsByClassName("cycle")[0];
-    cycleButton.addEventListener("click", function() {
-      if (cycle) {
-        cycle = false;
-      } else {
-        cycle = true;
-      }
-    })
-
   const circlesButton = document.getElementById('circles');
   const barsButton = document.getElementById('bars');
   const oscilloButton = document.getElementById('oscilloscope');
@@ -192,6 +164,30 @@ window.onload = function () {
     display = "oscilloscope";
     console.log(display);
   })
+
+  const colorpicker = document.getElementsByClassName('rainbow')[0];
+  colorpicker.addEventListener("click", function (e) {
+    let rect = colorpicker.getBoundingClientRect();
+    let percent = (e.pageX - rect.left) / colorpicker.offsetWidth;
+    hue = 360 * percent;
+    console.log(e.pageX - rect.left);
+  })
+
+  const cycleButton = document.getElementsByClassName('cycle')[0];
+
+  cycleButton.addEventListener("click", function () {
+    if (cycle) {
+      cycle = false;
+    } else {
+      cycle = true;
+    }
+  })
+  
+  // const categories = document.getElementsByClassName("categories-box");
+  //   categories.addEventListener("click", function() {
+  //     let lists = document.getElementsByClassName("categories-list");
+  //       lists.classList.toggle("hiding");
+  //   })
 
 }
 
