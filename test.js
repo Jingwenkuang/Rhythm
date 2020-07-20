@@ -1,4 +1,4 @@
-let audioContext, analyser, context, sourceNode, cycle;
+let audioContext, analyser, context, sourceNode, cycle, random = Math.random, circles = [], Circle;
 
 window.onload = function () {
   let display = "circles";
@@ -82,8 +82,8 @@ window.onload = function () {
       drawBars(context, dataArray);
     } else if (display === "oscilloscope") {
       drawOscilloscope(context, dataArray);
-    } else if (display === 'ripple') {
-      drawSun(context)
+    } else if (display === 'bubbles') {
+      drawBubbles(dataArray);
     }
 
     if (cycle && audioContext.state === 'running') {
@@ -150,6 +150,7 @@ window.onload = function () {
   const circlesButton = document.getElementById('circles');
   const barsButton = document.getElementById('bars');
   const oscilloButton = document.getElementById('oscilloscope');
+  const bubblesButton = document.getElementById('bubbles');
 
   circlesButton.addEventListener("click", function () {
     display = "circles";
@@ -159,12 +160,17 @@ window.onload = function () {
   barsButton.addEventListener("click", function () {
     display = "bars";
     console.log(display);
-  })
+  });
 
   oscilloButton.addEventListener("click", function () {
     display = "oscilloscope";
     console.log(display);
-  })
+  });
+
+  // bubblesButton.addEventListener("click", function () {
+  //   display = "bubbles";
+  //   console.log(display);
+  // })
 
   const colorpicker = document.getElementsByClassName('rainbow')[0];
   colorpicker.addEventListener("click", function (e) {

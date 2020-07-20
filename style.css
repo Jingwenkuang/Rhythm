@@ -190,7 +190,7 @@ body {
   display:none;
 }  */
 
-/* .rainbow {
+.rainbow {
   height: 20px;
   width: 120px;
   overflow: hidden;
@@ -369,5 +369,5 @@ body {
 
 .closed {
   display: none;
-} */
+} 
 
