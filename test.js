@@ -82,9 +82,9 @@ window.onload = function () {
     context.clearRect(0, 0, width, height);
     bufferLength = analyser.frequencyBinCount;
     dataArray = new Uint8Array(analyser.frequencyBinCount);
-    // analyser.getByteTimeDomainData(dataArray);
-    analyser.getByteFrequencyData(dataArray);
-    oscilloX = 0;
+    analyser.getByteTimeDomainData(dataArray);
+    // analyser.getByteFrequencyData(dataArray);
+    x = 0;
     if (display === "circles") {
       for (let i = 0; i < dataArray.length; i += 1) {
         let freq = dataArray[i];
@@ -94,6 +94,8 @@ window.onload = function () {
       drawBars(context, dataArray);
     } else if (display === "oscilloscope") {
       drawOscilloscope(context, dataArray);
+    } else if (display === 'ripple') {
+      drawSun(context)
     }
 
     if (cycle && audioContext.state === 'running') {
@@ -110,8 +112,8 @@ window.onload = function () {
     gradient.addColorStop(1, "rgba(255, 0, 0, 0.2)");
     //draw a circle 
     context.beginPath();
-    // context.arc(centerX - (freq / 7), centerY - (freq /7), (Math.abs(freq - 150)) * 3, 0, 2 * Math.PI);
-    context.arc(centerX - (freq / 4), centerY - (freq / 4), (Math.abs(freq - 15)) * 1, 0, 2 * Math.PI);
+    context.arc(centerX - (freq / 7), centerY - (freq /7), (Math.abs(freq - 150)) * 3, 0, 2 * Math.PI);
+    // context.arc(centerX - (freq / 4), centerY - (freq / 4), (Math.abs(freq - 15)) * 1, 0, 2 * Math.PI);
     context.strokeStyle = gradient;
     context.fillStyle = "hsla(" + hue + ", 100%, 40%, .01)";
     context.fill();
@@ -120,6 +122,7 @@ window.onload = function () {
   }
 
   function drawBars(context, dataArray) {
+    analyser.getByteFrequencyData(dataArray);
     let x = 0; 
     let gradient = context.createLinearGradient(0, 0, 0, height);
     gradient.addColorStop(1, "rgba(255, 0, 0, 0.2)");
@@ -135,58 +138,33 @@ window.onload = function () {
     }
   }
 
-  // function drawOscilloscope(context, dataArray) {
-  //   context.fillStyle = 'rgb(200, 200, 200)';
-  //   context.lineWidth = 1;
-  //   context.strokeStyle = 'rgb(0, 0, 0)';
-  //   context.beginPath();
-  //   let sliceWidth = canvas.width * 1.0 / dataArray.length;
-  //   let x = 0;
-  //   for (let i = 0; i < dataArray.length; i += 1) {
-  //     let v = dataArray[i] / 128;
-  //     let y = v * 200 / 2;
-  //     if ( i === 0) {
-  //       context.moveTo(x, y);
-  //     } else {
-  //       context.lineTo(x, y);
-  //     }
-  //   }
-  //   x += sliceWidth;
-  //   context.lineTo(canvas.width, canvas.height / 2);
-  //   context.stroke();
-  // }
-
   // const categories = document.getElementsByClassName("categories-box");
   //   categories.addEventListener("click", function() {
   //     let lists = document.getElementsByClassName("categories-list");
   //       lists.classList.toggle("hiding");
   //   })
-  function drawOscilloscope(context, freqArray) {
-
+  function drawOscilloscope(context, dataArray) {
+    context.strokeStyle = 'hsla(' + hue + ', ' + 100 + '%,' + 40 + '%,' + 0.9 + ')';
+    context.lineWidth = 3;
+   
     context.beginPath();
     let sliceWidth = canvas.width * 1.0 / bufferLength;
-
-    let oscilloX = 0;
+    let x = 0;
     for (let i = 0; i < bufferLength; i++) {
-
-      let v = freqArray[i] / 86.0;
+      let v = dataArray[i] / 86.0;
       let y = v * 200 / 2;
-
       if (i === 0) {
-        context.moveTo(oscilloX, y);
+        context.moveTo(x, y);
       } else {
-        context.lineTo(oscilloX, y);
+        context.lineTo(x, y);
       }
-
-      oscilloX += sliceWidth;
+      x += sliceWidth;
     }
-
-    context.strokeStyle = 'hsla(' + hue + ', ' + 100 + '%,' + 40 + '%,' + 0.9 + ')';
-    context.lineTo(canvas.width, canvas.height / 1);
-    context.lineWidth = 2;
+    context.lineTo(canvas.width, canvas.height / 2);
     context.stroke();
   }
 
+ 
   const cycleButton = document.getElementsByClassName("cycle")[0];
     cycleButton.addEventListener("click", function() {
       if (cycle) {
@@ -199,6 +177,7 @@ window.onload = function () {
   const circlesButton = document.getElementById('circles');
   const barsButton = document.getElementById('bars');
   const oscilloButton = document.getElementById('oscilloscope');
+
   circlesButton.addEventListener("click", function () {
     display = "circles";
     console.log(display);
@@ -213,6 +192,7 @@ window.onload = function () {
     display = "oscilloscope";
     console.log(display);
   })
+
 }
 
 
