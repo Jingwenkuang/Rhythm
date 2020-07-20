@@ -10,10 +10,10 @@ body {
 h1 {
   display: flex;
   justify-content: center;
-  color: rgb(53, 193, 190);
+  color: rgb(139, 77, 77);
   font-size: 40px;
   font-family: sans-serif;
-  margin-top: 40px;
+  margin-top: 36px;
   margin-bottom: 66px;
   letter-spacing: 0.5px;
 }
@@ -32,8 +32,8 @@ h1 {
 .background {
   border: 3px solid white;
   margin: 106px 0px 0 329px;
-  width: 40%;
-  height: 60%;
+  width: 486px;
+  height: 452px;
   background-color: rgba(177, 161, 162, 0.5);
   color: rgb(101, 6, 21);
   position: relative;
@@ -95,7 +95,7 @@ html {
   background-color:white;
 }
 
-.cycleButton, .circleButton, .barsButton, .oscillButton {
+.cycleButton, .circleButton, .barsButton, .oscillButton, .close a {
   display: block;
   width: 85px;
   height: 18px;
@@ -108,7 +108,7 @@ html {
   text-align: center;
 }
 
-.circleButton:hover, .barsButton:hover, .oscillButton:hover, .cycleButton:hover {
+.circleButton:hover, .barsButton:hover, .oscillButton:hover, .cycleButton:hover, .close a:hover {
   cursor: pointer;
   box-shadow: 0 0 42px 14px white;
   background-color:white;
@@ -349,23 +349,34 @@ ul.categories-list {
 .link-buttons {
   display: flex;
   justify-content: center;
-  padding: 70px 0px 0px 0px;
+  padding: 32px 0px 0px 0px;
   width: 100%;
   font-size: 20px;
 }
 
-.close > a {
-  color: rgb(53, 193, 190);
+.modalText, .modalTextTwo {
+  padding-left: 18px;
+  padding-right: 18px;
+  font-size: 18px;
+  color: rgb(49, 47, 47);
 }
 
-.close > a:hover {
+.modalText {
+  padding-bottom: 18px;
+}
+
+/* .close > a {
+  color: rgb(139, 77, 77)
+} */
+
+/* .close > a:hover {
   cursor: pointer;
   text-decoration: underline;  
   box-shadow: 0 0 35px 12px white;
   background-color: whitesmoke;
   border-radius: 5px;
   padding: 8px;
-}
+} */
 
 .closed {
   display: none;

@@ -190,6 +190,16 @@ window.onload = function () {
     }
   })
 
+  const modal = document.getElementsByClassName('modal')[0];
+  const closeButton = document.getElementsByClassName('close')[0];
+  const backButton = document.getElementsByClassName('back')[0];
+  closeButton.addEventListener("click", function () {
+    modal.classList.add("closed");
+  });
+  backButton.addEventListener("click", function () {
+    modal.classList.remove("closed");
+  });
+
 
 }
 
