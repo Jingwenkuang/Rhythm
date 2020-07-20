@@ -113,72 +113,6 @@ html {
   box-shadow: 0 0 42px 14px white;
   background-color:white;
 }
-/* .sample a{
-  margin-top: 20px;
-} */
-/* .sample-file {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
-} */
-
-/* #canvas {
-  background-color: transparent;
-  position: absolute;
-  z-index: 1;
-  top: 0px;
-  margin: 0 auto;
-}
-
-.options {
-  display: block;
-  padding: 5px 10px;
-  max-width: 133px;
-  color: white;
-  font-family: 'Lato', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 12px;
-  background-color: transparent;
-  cursor: pointer;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-}
-
-.options div {
-  width: 130px;
-  text-align: right;
-  padding-right: 10px;
-}
-.options li {
-  text-align: right;
-  text-transform: lowercase;
-  list-style: none;
-  letter-spacing: 1.6px;
-  font-size: 14px;
-  padding: 5px 10px;
-  border-top: 1px solid white;
-}
-
-.options li:hover {
-  background-color: rgba(169, 169, 169, .45);
-}
-
-.options-header:hover {
-  color: #555;
-}
-
-.options-header:active {
-  color: #00688B;
-}
-
-.hiding {
-  display:none;
-}  */
 
 .rainbow {
   height: 20px;
@@ -239,22 +173,6 @@ ul.categories-list {
 
 .options a:active {
   color: #00688B;;
-}
-
-.cycle {
-  display: block;
-  font-size: 12px;
-  padding: 3px;
-  margin: 8px;
-}
-
-.visualization a {
-  display: block;
-  font-size: 12px;
-}
-
-.controls {
-  padding-top: 20px;
 }
 
 .modal {
@@ -364,19 +282,6 @@ ul.categories-list {
 .modalText {
   padding-bottom: 18px;
 }
-
-/* .close > a {
-  color: rgb(139, 77, 77)
-} */
-
-/* .close > a:hover {
-  cursor: pointer;
-  text-decoration: underline;  
-  box-shadow: 0 0 35px 12px white;
-  background-color: whitesmoke;
-  border-radius: 5px;
-  padding: 8px;
-} */
 
 .closed {
   display: none;
