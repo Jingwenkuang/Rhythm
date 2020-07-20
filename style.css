@@ -133,6 +133,7 @@ html {
 }
 
 .rainbow:hover {
+  cursor: pointer;
   opacity: .65;
 }
 
