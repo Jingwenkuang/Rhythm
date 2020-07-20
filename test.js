@@ -5,9 +5,10 @@ window.onload = function () {
   let audio = document.getElementById('audio-input');
   audio.addEventListener('change', function (e) {
     if (!audioContext || audioContext.state !== "running") {
-      audio.src = URL.createObjectURL(e.target.files[0]);
+      stream = URL.createObjectURL(e.target.files[0]);
       audio = new Audio();
       console.log(audio);
+      audio.src = stream;
       setupAudio();
     }
   });
@@ -16,7 +17,7 @@ window.onload = function () {
   let demo = document.getElementsByClassName('sample')[0];
 
   demo.addEventListener('click', function () {
-    audio = new Audio('beautifulEmotion.mp3');
+    audio = new Audio('./assets/musics/beautifulEmotion.mp3');
     setupAudio();
   });
 
@@ -182,7 +183,7 @@ window.onload = function () {
       cycle = true;
     }
   })
-  
+
   // const categories = document.getElementsByClassName("categories-box");
   //   categories.addEventListener("click", function() {
   //     let lists = document.getElementsByClassName("categories-list");
