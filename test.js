@@ -175,7 +175,7 @@ window.onload = function () {
   const colorpicker = document.getElementsByClassName('rainbow')[0];
   colorpicker.addEventListener("click", function (e) {
     let rect = colorpicker.getBoundingClientRect();
-    let percent = (e.pageX - rect.left) / colorpicker.offsetWidth;
+    let percent = (e.pageX - rect.right) / colorpicker.offsetWidth ;
     hue = 360 * percent;
     console.log(e.pageX - rect.left);
   })
@@ -190,11 +190,6 @@ window.onload = function () {
     }
   })
 
-  // const categories = document.getElementsByClassName("categories-box");
-  //   categories.addEventListener("click", function() {
-  //     let lists = document.getElementsByClassName("categories-list");
-  //       lists.classList.toggle("hiding");
-  //   })
 
 }
 
