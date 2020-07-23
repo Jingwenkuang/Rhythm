@@ -1,16 +1,19 @@
 
 body {
-	background-color: rgb(189, 179, 179);
+	/* background-color: rgb(189, 179, 179); */
 	padding: 15px 0px 0px 30px;
   font-family: system-ui; 
   color: hsla(0, 0%, 10%, 1);
+  background-image: url(assets/images/background4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
 h1 {
   display: flex;
   justify-content: center;
-  color: rgb(139, 77, 77);
+  color: rgb(34, 20, 20);
   font-size: 40px;
   font-family: sans-serif;
   margin-top: 36px;
@@ -19,14 +22,6 @@ h1 {
 }
 
 .modal {
-  /* position: absolute;
-  width: 100%;
-  background-color: whitesmoke;
-  top: 0;
-  left: 0;
-  height: 100%;
-  z-index: 1000;
-  font-family: Arial, Helvetica, sans-serif; */
   position: fixed;
   z-index: 10;
   background-image: url(assets/images/background.jpg);
@@ -35,19 +30,31 @@ h1 {
 }
 
 .background {
-  border: 3px solid white;
-  margin: 106px 0px 0 329px;
-  width: 486px;
-  height: 452px;
-  background-color: rgba(177, 161, 162, 0.5);
-  color: rgb(101, 6, 21);
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
 }
 
 html {
   font-family: sans-serif;
 }
 
+canvas#canvas {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 90%;
+}
 
 .main {
   display:flex;
@@ -80,6 +87,7 @@ html {
   box-shadow: 0 0 42px 14px white;
   background-color:white;
   border-radius: 50px;
+  border: 1px solid white;
 }
 
 .sample a {
@@ -98,6 +106,8 @@ html {
   cursor: pointer;
   box-shadow: 0 0 42px 14px white;
   background-color:white;
+  border: 1px solid white;
+  color: rgb(250, 199, 170);
 }
 
 .cycleButton, .circleButton, .barsButton, .oscillButton, .close a {
@@ -108,7 +118,7 @@ html {
   padding: 6px;
   margin-bottom: 8px;
   background-color: black;
-  color: rgb(189, 179, 179);
+  color:rgb(189, 179, 179);;
   border-radius: 4px;
   text-align: center;
 }
@@ -117,6 +127,8 @@ html {
   cursor: pointer;
   box-shadow: 0 0 42px 14px white;
   background-color:white;
+  border: 1px solid white;
+  color: rgb(250, 199, 170);
 }
 
 .rainbow {
@@ -164,6 +176,7 @@ ul.categories-list {
 .categories-box {
   font-size: 18px;
   font-weight: bolder;
+  color: rgb(250, 199, 170);
 }
 
 
@@ -245,7 +258,6 @@ ul.categories-list {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 0px 0px 0px;
 }
 
 .social-media-links > a {
