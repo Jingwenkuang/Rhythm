@@ -1,9 +1,7 @@
 
 body {
-  /* background-color: rgb(189, 179, 179); */
-  /* background-image: linear-gradient(to bottom right,#fad8a4, rgb(250, 234, 234)); */
-  background-image: linear-gradient(to bottom right, rgb(252, 205, 191), whitesmoke);
-	padding: 15px 0px 0px 30px;
+  background-image: linear-gradient(to right, rgb(252, 205, 191), rgb(245, 202, 188), whitesmoke);
+	padding: 15px 30px 15px 30px;
   font-family: system-ui; 
   color: hsla(0, 0%, 10%, 1);
 }
@@ -21,26 +19,29 @@ h1 {
 }
 
 .modal {
-  position: absolute;
-  width: 100%;
-  /* background-color: whitesmoke; */
-  background-image: linear-gradient(to right, pink, #ccffcc);
+  position: fixed;
   top: 0;
-  left: 0;
-  height: 100%;
-  z-index: 1000;
-  font-family: Arial, Helvetica, sans-serif;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(to right, pink, #ccffcc);
+  z-index: 10;
 }
 
 .background {
-  border: 3px solid white;
-  margin: 106px 0px 0 329px;
-  width: 486px;
-  height: 452px;
-  /* background-image: linear-gradient(to right, #ffff99, #bb99ff); */
-  background-color: rgba(248, 238, 239, 0.5);
-  color: rgb(101, 6, 21);
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  background-position: center;
 }
 
 html {
@@ -79,6 +80,7 @@ html {
   box-shadow: 0 0 42px 14px white;
   background-color:white;
   border-radius: 50px;
+  color: goldenrod;
 }
 
 .sample a {
@@ -89,7 +91,7 @@ html {
   padding: 6px;
   margin-bottom: 8px;
   background-color: black;
-  color: rgb(189, 179, 179);
+  color: antiquewhite;
   border-radius: 4px;
 }
 
@@ -97,6 +99,8 @@ html {
   cursor: pointer;
   box-shadow: 0 0 42px 14px white;
   background-color:white;
+  color: goldenrod;
+  border: 1px solid white;
 }
 
 .cycleButton, .circleButton, .barsButton, .oscillButton, .close a {
@@ -107,7 +111,7 @@ html {
   padding: 6px;
   margin-bottom: 8px;
   background-color: black;
-  color: rgb(189, 179, 179);
+  color: antiquewhite;
   border-radius: 4px;
   text-align: center;
 }
@@ -116,6 +120,8 @@ html {
   cursor: pointer;
   box-shadow: 0 0 42px 14px white;
   background-color:white;
+  color: goldenrod;
+  border: 1px solid white;
 }
 
 .rainbow {
@@ -164,8 +170,6 @@ ul.categories-list {
   font-size: 18px;
   font-weight: bolder;
 }
-
-
 
 .options a {
   line-height: 30px;
@@ -240,6 +244,14 @@ ul.categories-list {
   display: flex;
   justify-content: flex-end; 
 }
+
+canvas {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
 .social-media-links{
   display: flex;
   justify-content: center;
@@ -253,7 +265,7 @@ ul.categories-list {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 10px;
+  padding: 6px;
 }
 
 .social-media-links > a > img {
