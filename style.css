@@ -10,20 +10,24 @@ body {
 h1 {
   display: flex;
   justify-content: center;
-  color: rgb(139, 77, 77);
-  font-size: 36px;
-  font-family: sans-serif;
-  margin-top: 36px;
+  color: black;
+  font-size: 38px;
+  margin-top: 40px;
   margin-bottom: 66px;
   letter-spacing: 0.5px;
 }
 
 .modal {
   position: fixed;
-  top: 0;
+  /* top: 0;
   bottom: 0;
-  right: 0;
-  background-image: linear-gradient(to right, pink, #ccffcc);
+  right: 0; */
+  /* background-image: linear-gradient(to right, pink, #ccffcc); */
+  background-image: url(/assets/images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+
   z-index: 10;
 }
 
@@ -37,7 +41,7 @@ h1 {
 .modal-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   min-height: 100vh;
@@ -291,8 +295,8 @@ canvas {
 .modalText, .modalTextTwo {
   padding-left: 18px;
   padding-right: 18px;
-  font-size: 18px;
-  color: rgb(49, 47, 47);
+  font-size: 19px;
+  color: rgb(12, 12, 12);
 }
 
 .modalText {
