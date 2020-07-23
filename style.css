@@ -1,7 +1,10 @@
 
 body {
-  background-image: linear-gradient(to right, rgb(252, 205, 191), rgb(245, 202, 188), whitesmoke);
-	padding: 15px 30px 15px 30px;
+  /* background-image: linear-gradient(to right, rgb(252, 205, 191), rgb(245, 202, 188), whitesmoke); */
+  background-image: url(/assets/images/background4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 15px 30px 15px 30px;
   font-family: system-ui; 
   color: hsla(0, 0%, 10%, 1);
 }
