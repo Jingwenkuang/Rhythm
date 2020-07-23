@@ -1,6 +1,8 @@
 
 body {
-	background-color: rgb(189, 179, 179);
+  /* background-color: rgb(189, 179, 179); */
+  /* background-image: linear-gradient(to bottom right,#fad8a4, rgb(250, 234, 234)); */
+  background-image: linear-gradient(to bottom right, rgb(252, 205, 191), whitesmoke);
 	padding: 15px 0px 0px 30px;
   font-family: system-ui; 
   color: hsla(0, 0%, 10%, 1);
@@ -11,7 +13,7 @@ h1 {
   display: flex;
   justify-content: center;
   color: rgb(139, 77, 77);
-  font-size: 40px;
+  font-size: 36px;
   font-family: sans-serif;
   margin-top: 36px;
   margin-bottom: 66px;
@@ -21,7 +23,8 @@ h1 {
 .modal {
   position: absolute;
   width: 100%;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
+  background-image: linear-gradient(to right, pink, #ccffcc);
   top: 0;
   left: 0;
   height: 100%;
@@ -34,7 +37,8 @@ h1 {
   margin: 106px 0px 0 329px;
   width: 486px;
   height: 452px;
-  background-color: rgba(177, 161, 162, 0.5);
+  /* background-image: linear-gradient(to right, #ffff99, #bb99ff); */
+  background-color: rgba(248, 238, 239, 0.5);
   color: rgb(101, 6, 21);
   position: relative;
 }
@@ -240,7 +244,6 @@ ul.categories-list {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 0px 0px 0px;
 }
 
 .social-media-links > a {
