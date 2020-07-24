@@ -68,16 +68,6 @@ canvas#canvas {
   justify-content: flex-start;  
 }
 
-.play .buttons {
-  /* width: 40px;
-  color: white; */
-}
-
-.stop .buttons{
-  /* width: 48px;
-  margin-top: -4px; */
-}
-
 .back .buttons {
   width: 50px;
   
