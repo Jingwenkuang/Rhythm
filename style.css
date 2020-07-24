@@ -305,4 +305,28 @@ canvas {
 li {
   color: cyan;
 }
- 
+
+.upload-audio {
+  display: none;
+}
+
+.upload-custom-audio {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 3px 4px 3px 4px;
+  cursor: pointer;
+  text-align: center;
+  color: antiquewhite;
+  font-size: 13px;
+  width: 74%;
+}
+
+.icon-upload {
+  width: 22px;
+}
+
+label.upload-custom-audio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
