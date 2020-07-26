@@ -66,6 +66,17 @@ window.onload = function () {
     context = canvas.getContext("2d");
     var hue = hue || 330; 
   
+
+  // function func() {
+  //   let checkbx = document.getElementsByClassName("checkbx");
+  //   if (checkbx[0].checked) {
+  //     document.getElementById("cirlcles").drawCircle()
+  //   }
+  //   if (checkbx[1].checked) {
+  //     document.getElementById("bars").drawBars()
+  //   }
+  // }
+
   function update() {
     context.clearRect(0, 0, width, height);
     bufferLength = analyser.frequencyBinCount;
@@ -92,7 +103,15 @@ window.onload = function () {
     requestAnimationFrame(update);
   }
 
-  function drawCircle(context, freq) {
+  function drawCircle() {
+    context.clearRect(0, 0, width, height);
+    bufferLength = analyser.frequencyBinCount;
+    dataArray = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteTimeDomainData(dataArray);
+    for (let i = 0; i < dataArray.length; i += 1) {
+      let freq = dataArray[i];
+   
+
     let centerX = (width / 2);
     let centerY = (height / 2);
     let gradient = context.createLinearGradient(0, 0, 0, height);
@@ -106,9 +125,14 @@ window.onload = function () {
     context.fill();
     context.lineWidth = 1;
     context.stroke();
+
+    }
   }
 
   function drawBars(context, dataArray) {
+    context.clearRect(0, 0, width, height);
+    bufferLength = analyser.frequencyBinCount;
+    dataArray = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(dataArray);
     let x = 0; 
     let gradient = context.createLinearGradient(0, 0, 0, height);
@@ -200,6 +224,10 @@ window.onload = function () {
     modal.classList.remove("closed");
   });
 
+const createCheckboxes = () => {
+  const div = document.getElementById("checkboxes");
+  circlesCheckbox = createCheckbox("drawCircles", false);
+}
 
 
 }
