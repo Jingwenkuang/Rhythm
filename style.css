@@ -1,10 +1,11 @@
 
 body {
-  background-image: url(/assets/images/background4.jpg);
+  background-image: url(/assets/images/background2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   padding: 15px 30px 15px 30px;
   font-family: system-ui; 
+  z-index: 10;
 }
 
 h1 {
