@@ -24,11 +24,11 @@
         <div class="links-box">
           <div class="social-media-links">
             <a href="https://www.linkedin.com/in/jingwen-wendy-kuang-169a1b52/"><img src="assets/images/linkedin.png" alt="linkedin" /></a>
-            <a href="https://github.com/Jingwenkuang/Rhythm"><img src="assets/images/github.png" alt="github" /></a>
+            <a href="https://github.com/Jingwenkuang/Rhythm"><img src="assets/images/github-icon.png" alt="github"/></a>
             <a href="https://angel.co/u/jingwen-kuang"><img src="assets/images/angellist.png" alt="angellist" /></a>
           </div>
         </div>
-        <footer>
+        <footer class="footer-modal">
           <p class="footer-coypright">copyright © 2020 Rhythm</p>
         </footer>
       </div>
@@ -37,70 +37,76 @@
 
  
 <div class="main">
-<div class="nav">
-
-  <p class="back"><img class="buttons" src="https://img.icons8.com/flat_round/64/000000/back--v1.png"/></p>
-  <div class="sample"><a>Play demo</a></div>
-  <label for="audio-input" class="upload-custom-audio">
-    <img class="icon-upload" src="https://img.icons8.com/plasticine/100/000000/upload-2.png"/><div class="text">Upload File</div>
-  </label>
-  <input type="file" id="audio-input" class="upload-audio"/>
+  <div class="nav">
+  <div class="left">
+    <p class="back"><img class="buttons" src="https://img.icons8.com/flat_round/64/000000/back--v1.png"/></p>
+    <div class="sample"><a>Play demo</a></div>
+    <label for="audio-input" class="upload-custom-audio">
+      <img class="icon-upload" src="https://img.icons8.com/plasticine/100/000000/upload-2.png"/><div class="text">Upload File</div>
+    </label>
+    <input type="file" id="audio-input" class="upload-audio"/>
   
       <div id='toggle-buttons'>
         <div id='song-buttons'></div>
       </div>
 
-  <div class="control-buttons">
+    <div class="control-buttons">
    
-    <p class="play"><img class="buttons" src="https://img.icons8.com/color/48/000000/play-button-circled.png" /></p>
-    <p class="stop"><img class="buttons" src="https://img.icons8.com/color/48/000000/stop-squared.png" /></p>
+      <p class="play"><img class="buttons" src="https://img.icons8.com/color/48/000000/play-button-circled.png" /></p>
+      <p class="stop"><img class="buttons" src="https://img.icons8.com/color/48/000000/stop-squared.png" /></p>
+    </div>
   </div>
-
-  <aside class="categories">
-    <div class="categories-box">Options</div>
-    <ul class="categories-list">
-      <li>Color
-        <div class="color">
-          <div class="rainbow"></div>
-          <div class="cycleButton"><a class="cycle">rainbow</a></div>
-        </div>
-      </li>
-
-      <li>Visualization
-        <div class="visualization">
-          <div class="circleButton"><a id="circles" class="selected">circles</a></div>
-          <div class="barsButton"><a id="bars" class="selected">bars</a></div>
-          <div class="oscillButton"><a id="oscilloscope" class="selected">oscilloscope</a></div>
-       <!-- <a id="bubbles">bubbles</a>  -->
-        </div>
-      </li>
-    </ul>
-
-    <div id='checkboxes'></div>
-    <!-- <p>Visualization</p>
-      <ul class="checkboxes">
-        <li>
-          <label for="cirlcles">
-            <input type="checkbox" id="cirlcles" onclick="func()" class="checkbx">
-            circles
-          </label>
-        </li>
-        <li>
-          <label for="bars">
-            <input type="checkbox" id="bars" onclick="func()" class="checkbx">
-            bars
-          </label>
-        </li>
-        <li>
-          <label for="oscillo">
-            <input type="checkbox" id="oscillo" onclick="func()" class="checkbx">
-            oscilloscope
-          </label>
-        </li>
-      </ul> -->
-  </aside>
+  <div class="middle">
+    <div class='right'><canvas id="canvas"></canvas></div>
+  </div>
 </div>
-<div class='right'><canvas id="canvas"></canvas></div>
+
+<div class="categories">
+  <div class="categories-box">Options</div>
+  <ul class="categories-list">
+    <li>Color
+      <div class="color">
+        <div class="rainbow"></div>
+        <div class="cycleButton"><a class="cycle">rainbow</a></div>
+      </div>
+    </li>
+
+    <li>Visualization
+      <div class="visualization">
+        <div class="circleButton"><a id="circles" class="selected">circles</a></div>
+        <div class="barsButton"><a id="bars" class="selected">bars</a></div>
+        <div class="oscillButton"><a id="oscilloscope" class="selected">oscilloscope</a></div>
+     <!-- <a id="bubbles">bubbles</a>  -->
+      </div>
+    </li>
+  </ul>
+
+  <div id='checkboxes'></div>
+  <!-- <p>Visualization</p>
+    <ul class="checkboxes">
+      <li>
+        <label for="cirlcles">
+          <input type="checkbox" id="cirlcles" onclick="func()" class="checkbx">
+          circles
+        </label>
+      </li>
+      <li>
+        <label for="bars">
+          <input type="checkbox" id="bars" onclick="func()" class="checkbx">
+          bars
+        </label>
+      </li>
+      <li>
+        <label for="oscillo">
+          <input type="checkbox" id="oscillo" onclick="func()" class="checkbx">
+          oscilloscope
+        </label>
+      </li>
+    </ul> -->
+  </div>
 </div>
 </body>
+  <footer class="footer-content">
+    <p class="footer-coypright">copyright © 2020 Rhythm</p>
+  </footer>
 </html>
