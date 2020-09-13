@@ -14,6 +14,16 @@ Rhythm is a web application built using the Web Audio API and HTML5 Canvas for c
 * Variety of visual styles by using Canvas
 * Variety of color visulization 
 
+### Select different waveform 
+<p align='center'>
+  <img style='max-width: 60%;' height='350' src='https://media.giphy.com/media/WUfUzDsqQHXTiDTRhy/giphy.gif'>
+ </p>
+
+### Select different color 
+<p align='center'>
+  <img style='max-width: 60%;' height='350' src='https://media.giphy.com/media/ZEZ6bvB9OcfzJ9v641/giphy.gif'>
+ </p>
+ 
 ## Coming soon 
 * More visualization style 
 * Add volume slide bar 
