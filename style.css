@@ -86,6 +86,7 @@ canvas#canvas {
   background-color: black;
   color: antiquewhite;
   border-radius: 4px;
+  text-align: center;
 }
 
 .sample a:hover {
@@ -98,7 +99,7 @@ canvas#canvas {
 
 .cycleButton, .circleButton, .barsButton, .oscillButton, .close a {
   display: block;
-  width: 85px;
+  width: 89px;
   height: 18px;
   border: 1px solid black;
   padding: 6px;
@@ -127,6 +128,7 @@ canvas#canvas {
   overflow: hidden;
   background: whitesmoke; 
   opacity: 0.8;
+  margin-bottom: 5px;
   background: linear-gradient( 
    to right,
    rgb(255, 17, 0), 
@@ -148,6 +150,7 @@ canvas#canvas {
   padding: 5px;
   height: 70px;
   width: 130px;
+  margin-top: 5%;
 }
 
 .color:hover .rainbow {
