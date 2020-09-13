@@ -128,7 +128,7 @@ canvas#canvas {
   overflow: hidden;
   background: whitesmoke; 
   opacity: 0.8;
-  margin-bottom: 5px;
+  margin-bottom: 5%;
   background: linear-gradient( 
    to right,
    rgb(255, 17, 0), 
