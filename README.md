@@ -10,7 +10,7 @@ Rhythm is a web application built using the Web Audio API and HTML5 Canvas for c
 * Canvas 
 
 ## Features 
-* Play user's uploaded song or play demo track 
+* Play user's uploaded song or demo track 
 * Variety of visual styles by using Canvas
 * Variety of color visulization 
 
