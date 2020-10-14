@@ -5,6 +5,7 @@ Rhythm is a web application built using the Web Audio API and HTML5 Canvas for c
 [Visit Live Site](https://jingwenkuang.github.io/Rhythm/)
 
 ## Technologies 
+* JavaScript
 * HTML/CSS/JS
 * Web Audio API 
 * Canvas 
