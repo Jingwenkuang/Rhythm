@@ -1,8 +1,8 @@
-# [Rhythm](https://jingwenkuang.github.io/Rhythm/)
+# Rhythm
 
 Rhythm is a web application built using the Web Audio API and HTML5 Canvas for creating visual representations of sound files.
 
-[Visit Live Site](https://jingwenkuang.github.io/Rhythm/)
+<!-- [Visit Live Site](https://jingwenkuang.github.io/Rhythm/) -->
 
 ## Technologies 
 * JavaScript
